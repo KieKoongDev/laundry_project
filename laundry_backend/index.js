@@ -13,7 +13,7 @@ app.use(cors());
 
 app.post('/send-line-notify', async (req, res) => {
   const { message } = req.body;
-  const lineToken = 'LFLfXbFm29i2xbjNKQyGBia3kG4kRaCOz7JbPfh4VPy'; // Replace with your LINE Notify token
+  const lineToken = 'fJpRS5dZt1KYdWZMPDMe6CO6nEv5O9Jg5CR2VAozKH8';
 
   await axios.post(
     'https://notify-api.line.me/api/notify',

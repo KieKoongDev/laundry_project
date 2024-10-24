@@ -166,6 +166,7 @@ export default {
             m => m.id === machine.id,
           )?.notified
         })
+        this.saveMachines()
       }
     },
     startCycle(machine) {
@@ -187,9 +188,9 @@ export default {
       const remainingMinutes = Math.floor((endTime - currentTime) / 60000)
       machine.remainingTime = Math.max(remainingMinutes, 0)
       if (machine.remainingTime === 1 && !machine.notified) {
-        this.notifyLineGroup(machine.id)
-        machine.notified = true
+        this.notifyLineGroup(machine)
       }
+      this.saveMachines()
     },
     countdown(machine) {
       const interval = setInterval(() => {
@@ -200,15 +201,17 @@ export default {
           this.saveMachines()
         }
         if (machine.remainingTime === 1 && !machine.notified) {
-          this.notifyLineGroup(machine.id)
+          this.notifyLineGroup(machine)
         }
         this.saveMachines()
       }, 60000)
     },
-    async notifyLineGroup(machineId) {
+    async notifyLineGroup(machine) {
       await axios.post(`${import.meta.env.VITE_API_URL}/send-line-notify`, {
-        message: `เครื่องที่ ${machineId} ใกล้เสร็จแล้ว!`,
+        message: `เครื่องที่ [${machine.id}] ใกล้เสร็จแล้ว! อีกประมาณ 1 นาที (${new Date().toLocaleTimeString('th')?.slice(0,-3)})`,
       })
+      machine.notified = true
+      this.saveMachines()
     },
     saveMachines() {
       localStorage.setItem('machines', JSON.stringify(this.machines))

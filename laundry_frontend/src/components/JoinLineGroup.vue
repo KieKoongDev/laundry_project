@@ -6,7 +6,7 @@
       </p>
       <a
       v-if="currentDevice !== 'Desktop'"
-        href="https://line.me/ti/g/Bb61hZIwGB"
+        href="https://line.me/ti/g/bSbNbOzCdI"
         target="_blank"
         class="bg-white px-4 py-2 rounded text-center"
       >
