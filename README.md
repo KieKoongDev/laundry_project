@@ -1,14 +1,16 @@
 # .
 
-This template should help get you started developing with Vue 3 in Vite.
+developing with Vue 3 in Vite and Express Nodejs for backend(line notify service).
 
-## Recommended IDE Setup
+## Description about this project
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+``Moodeng Laundry
 
-## Customize configuration
+This is an example web application for laundory company to draw and service their customers to using washing machines,
+customers can cheking available washing machine and tracking status such as washing time. With LINE notification service, when each running washing machine
+has 1 minus left will notify to line group that users join.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+Hopefully this project can inspire or useful for you.
 
 ## Project Setup
 
