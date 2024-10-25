@@ -35,6 +35,10 @@ app.post('/send-line-notify', async (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to Moodeng Laundry server!');
+})
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
