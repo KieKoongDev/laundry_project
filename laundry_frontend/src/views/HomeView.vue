@@ -207,9 +207,19 @@ export default {
       }, 60000)
     },
     async notifyLineGroup(machine) {
-      await axios.post(`${import.meta.env.VITE_API_URL}/send-line-notify`, {
-        message: `เครื่องที่ [${machine.id}] ใกล้เสร็จแล้ว! อีกประมาณ 1 นาที (${new Date().toLocaleTimeString('th')?.slice(0,-3)})`,
-      })
+      const lineToken = 'fJpRS5dZt1KYdWZMPDMe6CO6nEv5O9Jg5CR2VAozKH8';
+      await axios.post(
+        'https://notify-api.line.me/api/notify',
+        {
+          message: `เครื่องที่ [${machine.id}] ใกล้เสร็จแล้ว! อีกประมาณ 1 นาที`,
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${lineToken}`,
+          },
+        }
+      )
       machine.notified = true
       this.saveMachines()
     },
